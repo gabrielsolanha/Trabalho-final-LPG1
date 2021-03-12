@@ -29,7 +29,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jTabbedPane1" alignment="0" pref="1221" max="32767" attributes="0"/>
+          <Component id="jTabbedPane1" alignment="0" pref="1223" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -82,7 +82,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="654" max="32767" attributes="0"/>
+                      <EmptySpace pref="656" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -169,6 +169,9 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="painel">
+          <Events>
+            <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="painelComponentShown"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Listas e alter&#xe7;&#xf5;es">
@@ -182,68 +185,34 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" min="-2" pref="562" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jScrollPane2" min="-2" pref="562" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="txtValorcadastro" max="32767" attributes="0"/>
+                                      <Component id="txtRotulocadastro" min="-2" pref="108" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="radMail" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="txtValorcadastro" max="32767" attributes="0"/>
-                                              <Component id="txtRotulocadastro" min="-2" pref="108" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="radMail" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jRadioButton2" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                                  <Component id="btnCadatroTelMail" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                                              <Component id="txtAlteraNome" min="-2" pref="178" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="txtAlteraSobrenome" pref="176" max="32767" attributes="0"/>
-                                                  <Component id="btnAlterar" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="btnCarregaTelMail" alignment="0" max="32767" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="205" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="jScrollPane3" min="-2" pref="429" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jRadioButton2" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="154" max="-2" attributes="0"/>
-                              <Component id="btnCarregar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnRemover" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="1063" max="32767" attributes="0"/>
+                          <Component id="btnCadatroTelMail" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="6" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="290" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -254,6 +223,32 @@
                                   <Component id="txtAlteraRotulo" min="-2" pref="90" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                          <Component id="txtAlteraNome" min="-2" pref="178" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="txtAlteraSobrenome" pref="176" max="32767" attributes="0"/>
+                                              <Component id="btnAlterar" alignment="0" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnRemover" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jScrollPane3" min="-2" pref="429" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
@@ -267,12 +262,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnCarregar" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnRemover" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -285,10 +275,11 @@
                                   <Component id="txtAlteraSobrenome" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                              <Component id="btnAlterar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                              <Component id="btnCarregaTelMail" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="btnAlterar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnRemover" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                               <Component id="jScrollPane3" min="-2" pref="144" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane2" min="-2" pref="305" max="-2" attributes="0"/>
@@ -354,14 +345,6 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="btnCarregar">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Carregar Contatos"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCarregarActionPerformed"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JButton" name="btnRemover">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Remover Contato"/>
@@ -462,14 +445,6 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton2ActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnCarregaTelMail">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Carregar Telefone/Email"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCarregaTelMailActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel10">

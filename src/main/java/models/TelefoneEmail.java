@@ -180,7 +180,6 @@ public class TelefoneEmail {
             
             int affectedRows = st.executeUpdate();
             
-            
             if (affectedRows == 0) {
                 throw new SQLException("Creating user failed, no rows affected.");
             }

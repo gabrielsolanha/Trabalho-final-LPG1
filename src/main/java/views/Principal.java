@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Date;
+import utils.Validator;
 
 /**
  *
@@ -55,7 +56,6 @@ public class Principal extends JFrame {
         painel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblContato = new javax.swing.JTable();
-        btnCarregar = new javax.swing.JButton();
         btnRemover = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtAlteraNome = new javax.swing.JTextField();
@@ -71,7 +71,6 @@ public class Principal extends JFrame {
         jLabel9 = new javax.swing.JLabel();
         radMail = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
-        btnCarregaTelMail = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         btnCadatroTelMail = new javax.swing.JButton();
@@ -143,7 +142,7 @@ public class Principal extends JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(654, Short.MAX_VALUE))
+                .addContainerGap(656, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,6 +169,12 @@ public class Principal extends JFrame {
         );
 
         jTabbedPane1.addTab("Cadastro", jPanel1);
+
+        painel.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                painelComponentShown(evt);
+            }
+        });
 
         tblContato.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -200,13 +205,6 @@ public class Principal extends JFrame {
             }
         });
         jScrollPane2.setViewportView(tblContato);
-
-        btnCarregar.setText("Carregar Contatos");
-        btnCarregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCarregarActionPerformed(evt);
-            }
-        });
 
         btnRemover.setText("Remover Contato");
         btnRemover.addActionListener(new java.awt.event.ActionListener() {
@@ -291,13 +289,6 @@ public class Principal extends JFrame {
             }
         });
 
-        btnCarregaTelMail.setText("Carregar Telefone/Email");
-        btnCarregaTelMail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCarregaTelMailActionPerformed(evt);
-            }
-        });
-
         jLabel10.setText("Rotulo");
 
         jLabel11.setText("Valor");
@@ -322,53 +313,28 @@ public class Principal extends JFrame {
             painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelLayout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9))
                         .addGap(18, 18, 18)
                         .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtValorcadastro)
+                                .addComponent(txtRotulocadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(painelLayout.createSequentialGroup()
-                                .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel9))
+                                .addComponent(radMail)
                                 .addGap(18, 18, 18)
-                                .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtValorcadastro)
-                                        .addComponent(txtRotulocadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(painelLayout.createSequentialGroup()
-                                        .addComponent(radMail)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jRadioButton2))))
-                            .addComponent(btnCadatroTelMail))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelLayout.createSequentialGroup()
-                                .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(painelLayout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addGap(29, 29, 29)
-                                        .addComponent(txtAlteraNome, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelLayout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtAlteraSobrenome, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
-                                            .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(btnCarregaTelMail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                                .addGap(205, 205, 205))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelLayout.createSequentialGroup()
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())))
+                                .addComponent(jRadioButton2))))
+                    .addComponent(btnCadatroTelMail))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelLayout.createSequentialGroup()
-                        .addGap(154, 154, 154)
-                        .addComponent(btnCarregar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnRemover)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelLayout.createSequentialGroup()
-                        .addGap(0, 1063, Short.MAX_VALUE)
+                        .addGap(290, 290, 290)
                         .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
                             .addComponent(jLabel11))
@@ -376,7 +342,26 @@ public class Principal extends JFrame {
                         .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtAlteraValor)
                             .addComponent(txtAlteraRotulo, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelLayout.createSequentialGroup()
+                            .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(painelLayout.createSequentialGroup()
+                                    .addComponent(jLabel1)
+                                    .addGap(29, 29, 29)
+                                    .addComponent(txtAlteraNome, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelLayout.createSequentialGroup()
+                                    .addComponent(jLabel6)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtAlteraSobrenome, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+                                        .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnRemover)
+                            .addGap(76, 76, 76))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelLayout.createSequentialGroup()
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap()))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton3)
@@ -385,11 +370,7 @@ public class Principal extends JFrame {
         painelLayout.setVerticalGroup(
             painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCarregar)
-                    .addComponent(btnRemover))
-                .addGap(18, 18, 18)
+                .addGap(52, 52, 52)
                 .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelLayout.createSequentialGroup()
                         .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -400,10 +381,10 @@ public class Principal extends JFrame {
                             .addComponent(jLabel6)
                             .addComponent(txtAlteraSobrenome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(20, 20, 20)
-                        .addComponent(btnAlterar)
-                        .addGap(32, 32, 32)
-                        .addComponent(btnCarregaTelMail)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnAlterar)
+                            .addComponent(btnRemover))
+                        .addGap(61, 61, 61)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelLayout.createSequentialGroup()
@@ -440,7 +421,7 @@ public class Principal extends JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1221, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1223, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -461,6 +442,7 @@ public class Principal extends JFrame {
         Date dataNascimento = new Date(ano, mes, dia);
         this.contatoDAO.create(nome, sobrenome, dataNascimento);
         JOptionPane.showMessageDialog(this, "Cadastro de contato efetuado com sucesso!");
+        atualizaTabelaContato();
     }//GEN-LAST:event_botaoCadastrarActionPerformed
 
     private void txtSobrenomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSobrenomeActionPerformed
@@ -500,15 +482,17 @@ public class Principal extends JFrame {
         String id = (String) this.tblContato.getValueAt(linhaSelecionada, 0);
 
         String nome = this.txtAlteraNome.getText();
-
         String sobrenome = this.txtAlteraSobrenome.getText();
 
         
         this.contatoDAO.update(id,nome,sobrenome);
         
-        JOptionPane.showMessageDialog(this, "Nome e sobrenome alterados com sucesso");
-
-        this.btnCarregarActionPerformed(evt);
+        JOptionPane.showMessageDialog(this, "Nome e sobrenome alterados com sucesso"); 
+        this.txtAlteraNome.setText("");
+        this.txtAlteraSobrenome.setText("");
+        
+        
+        atualizaTabelaContato();
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void txtAlteraNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAlteraNomeActionPerformed
@@ -519,29 +503,16 @@ public class Principal extends JFrame {
         int linhaSelecionada = this.tblContato.getSelectedRow();
 
         String id = (String) this.tblContato.getValueAt(linhaSelecionada, 0);
-
-        this.contatoDAO.remover(id);
-        this.btnCarregarActionPerformed(evt);
+        
+        try {
+            this.contatoDAO.remover(id);
+            JOptionPane.showMessageDialog(this, "Contato removido");
+            atualizaTabelaContato();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao deletar"); 
+        }
         
     }//GEN-LAST:event_btnRemoverActionPerformed
-
-    private void btnCarregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarregarActionPerformed
-        String[] campos = {"Id Contato", "Nome", "Sobrenome", "Data de Nascimento"};
-        DefaultTableModel dtm = new DefaultTableModel(campos, 0);
-        this.tblContato.setModel(dtm);
-
-        List<Contato> contatos = this.contatoDAO.consultarContatos();
-        
-        for (int i = 0; i < contatos.size(); i++) {;
-            Contato c = contatos.get(i);
-            
-            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
-            String strDate = formatter.format(c.getDataNascimento());  
-    
-            String[] valores = {c.getId(),c.getNome(), c.getSobrenome(),strDate};
-            dtm.addRow(valores);
-        }
-    }//GEN-LAST:event_btnCarregarActionPerformed
 
     private void tblContatoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblContatoMouseClicked
         int linhaSelecionada = this.tblContato.getSelectedRow();
@@ -551,40 +522,11 @@ public class Principal extends JFrame {
 
         txtAlteraNome.setText(nome);
         txtAlteraSobrenome.setText(sobrenome);
+        
+
+        atualizaTabelaTelefoneEmail();
+  
     }//GEN-LAST:event_tblContatoMouseClicked
-
-    private void btnCarregaTelMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarregaTelMailActionPerformed
-        int linhaSelecionada = this.tblContato.getSelectedRow();
-
-        String idcontato = (String) this.tblContato.getValueAt(linhaSelecionada, 0);
-
-        String[] campos = {"Id Tel/Mail", "Rotulo", "Valor", "Tipo", "Id Contato"};
-        DefaultTableModel dtm = new DefaultTableModel(campos, 0);
-        this.tblTelMail.setModel(dtm);
-
-        List<TelefoneEmail> telmail = this.telmailDAO.consultarTelefoneEmail(idcontato);
-        /**
-         * ****************************
-         * presisa-se do metodo consultarContatos que retorne todos os telefones
-         * e e-mails do idcontato relacionado
-         *
-         *
-         *
-         */
-        for (int i = 0; i < telmail.size(); i++) {;;
-            TelefoneEmail t = telmail.get(i);
-            String tipo;
-            if(t.getTipo() == Tipo.EMAIL){
-                tipo = "Email";
-            }else{
-                tipo = "Telefone";
-            }
-             
-    
-            String[] valores = {t.getId(),t.getRotulo(), t.getValor(),tipo,idcontato};
-            dtm.addRow(valores);
-        }
-    }//GEN-LAST:event_btnCarregaTelMailActionPerformed
 
     private void btnCadatroTelMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadatroTelMailActionPerformed
 
@@ -602,9 +544,36 @@ public class Principal extends JFrame {
         }else{
             tipo = Tipo.TELEFONE;
         }
-        telmailDAO.create(rotulo,  valor,  tipo, contatoId);
-        JOptionPane.showMessageDialog(this, "Cadastro de telefone/email efetuado com sucesso!");
+        
+        boolean isValorValid = true;
+        
+        if (tipo == Tipo.EMAIL) {
+            //valida email
+            if (!Validator.isValidEmail(valor)) {
+                JOptionPane.showMessageDialog(this, "Formato de email inválido. Ex: abc@email.com");
+                isValorValid = false;
+            }
+        } else {
+            // valida tel
+            if (!Validator.isValidTelefone(valor)) {
+                isValorValid = false;
+                JOptionPane.showMessageDialog(this, "Formato de telefone inválido Ex: (49) 00000-0000");
+            }
+        }
+        
+        if (isValorValid) {
+            try {
+                telmailDAO.create(rotulo,  valor,  tipo, contatoId);
+                JOptionPane.showMessageDialog(this, "Cadastro de telefone/email efetuado com sucesso!");
+                txtRotulocadastro.setText("");
+                txtValorcadastro.setText("");
+            } catch(Exception e) {
+                JOptionPane.showMessageDialog(this, "Erro ao cadastrar Telefone/Email");
+            }
 
+            atualizaTabelaTelefoneEmail();
+        }
+        
     }//GEN-LAST:event_btnCadatroTelMailActionPerformed
 
     private void txtDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiaActionPerformed
@@ -625,8 +594,12 @@ public class Principal extends JFrame {
         
         JOptionPane.showMessageDialog(this, "Rotulo e valor alterados com sucesso");
 
-        this.btnCarregaTelMailActionPerformed(evt);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void painelComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_painelComponentShown
+        // TODO add your handling code here:
+        atualizaTabelaContato();
+    }//GEN-LAST:event_painelComponentShown
 
     /**
      * @param args the command line arguments
@@ -668,8 +641,6 @@ public class Principal extends JFrame {
     private javax.swing.JButton botaoCadastrar;
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnCadatroTelMail;
-    private javax.swing.JButton btnCarregaTelMail;
-    private javax.swing.JButton btnCarregar;
     private javax.swing.JButton btnRemover;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
@@ -705,4 +676,53 @@ public class Principal extends JFrame {
     private javax.swing.JTextField txtSobrenome;
     private javax.swing.JTextField txtValorcadastro;
     // End of variables declaration//GEN-END:variables
+
+    public void atualizaTabelaContato() {
+        String[] campos = {"Id Contato", "Nome", "Sobrenome", "Data de Nascimento"};
+        DefaultTableModel dtm = new DefaultTableModel(campos, 0);
+        this.tblContato.setModel(dtm);
+
+        List<Contato> contatos = this.contatoDAO.consultarContatos();
+        
+        for (int i = 0; i < contatos.size(); i++) {;
+            Contato c = contatos.get(i);
+            
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
+            String strDate = formatter.format(c.getDataNascimento());  
+    
+            String[] valores = {c.getId(),c.getNome(), c.getSobrenome(),strDate};
+            dtm.addRow(valores);
+        }
+    }
+    
+    public void atualizaTabelaTelefoneEmail() {
+        int linhaSelecionada = this.tblContato.getSelectedRow();
+
+        String idcontato = (String) this.tblContato.getValueAt(linhaSelecionada, 0);
+
+        String[] campos = {"Id Tel/Mail", "Rotulo", "Valor", "Tipo", "Id Contato"};
+        DefaultTableModel dtm = new DefaultTableModel(campos, 0);
+        this.tblTelMail.setModel(dtm);
+
+        List<TelefoneEmail> telmail = this.telmailDAO.consultarTelefoneEmail(idcontato);
+        /**
+         * ****************************
+         * presisa-se do metodo consultarContatos que retorne todos os telefones
+         * e e-mails do idcontato relacionado
+         *
+         */
+        for (int i = 0; i < telmail.size(); i++) {;;
+            TelefoneEmail t = telmail.get(i);
+            String tipo;
+            if(t.getTipo() == Tipo.EMAIL){
+                tipo = "Email";
+            }else{
+                tipo = "Telefone";
+            }
+             
+    
+            String[] valores = {t.getId(),t.getRotulo(), t.getValor(),tipo,idcontato};
+            dtm.addRow(valores);
+        }
+    }
 }
